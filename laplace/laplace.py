@@ -66,6 +66,7 @@ def get_parameters_from_args(args: argparse.Namespace):
 [_, ready_laplace_y] = ready_laplace(median, dominant, variance, range)
 [x, my_y] = my_laplace(median, dominant, variance, range)
 
-plt.plot(x, ready_laplace_y, color='r')
-plt.plot(x, my_y, color='b')
+plt.plot(x, ready_laplace_y, color='r', label="from scipy")
+plt.plot(x, my_y, color='b', label='custom')
+plt.legend(loc="upper left")
 plt.show()
