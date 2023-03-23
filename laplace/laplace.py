@@ -3,6 +3,11 @@ import argparse
 import matplotlib.pyplot as plt
 import numpy
 from scipy.stats import laplace
+# import config
+import json
+
+config = json.load(open('config.json'))
+
 
 # -s: odchylenie standardowe
 # -u: dominanta
@@ -62,9 +67,11 @@ def get_parameters_from_args(args: argparse.Namespace):
     return [median, dominant, variance, range]
 
 
-[median, dominant, variance, range] = get_parameters_from_args(args)
-[_, ready_laplace_y] = ready_laplace(median, dominant, variance, range)
-[x, my_y] = my_laplace(median, dominant, variance, range)
+# [config.median, config.dominant, config.variance, config.range] = get_parameters_from_args(args)
+[_, ready_laplace_y] = ready_laplace(
+    config['median'], config['dominant'], config['variance'], config['range'])
+[x, my_y] = my_laplace(config['median'], config['dominant'],
+                       config['variance'], config['range'])
 
 plt.plot(x, ready_laplace_y, color='r', label="from scipy")
 plt.plot(x, my_y, color='b', label='custom')
