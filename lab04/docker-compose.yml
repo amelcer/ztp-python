@@ -1,0 +1,11 @@
+version: "3.8"  
+  
+services:
+  my-mariadb:
+    image: mariadb
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MARIADB_ROOT_PASSWORD: admin
+    
